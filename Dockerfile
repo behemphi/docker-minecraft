@@ -54,12 +54,12 @@ ENV SPAWN_PROTECTION=16                 MAX_TICK_TIME=60000 \
     HARDCORE=false                      ENABLE_COMMAND_BLOCK=false \
     MAX_PLAYERS=20                      NETWORK_COMPRESSION_THRESHOLD=256 \
     MAX_WORLD_SIZE=29999984             SERVER_PORT=25565 \
-	SERVER_IP=NULL                  	SPAWN_NPCS=true \
+	SERVER_IP=""                      	SPAWN_NPCS=true \
 	ALLOW_FLIGHT=false                  LEVEL_NAME=WORLD \
-	VIEW_DISTANCE=10                	RESOURCE_PACK=NULL \
+	VIEW_DISTANCE=10                	RESOURCE_PACK="" \
 	SPAWN_ANIMALS=true              	WHITE_LIST=false \
 	GENERATE_STRUCTURES=true        	ONLINE_MODE=true \
-	MAX_BUILD_HEIGHT=256            	LEVEL_SEED=NULL \
+	MAX_BUILD_HEIGHT=256            	LEVEL_SEED="" \
 	USE_NATIVE_TRANSPORT=true           ENABLE_RCON=false \
     MOTD="Welcome to my very own Minecraft server!" \
     QUERY_PORT=25565                    RCON_PASSWORD="" \
