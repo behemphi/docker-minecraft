@@ -78,6 +78,8 @@ ENV MAX_MEM_POOL=768                   INITAL_MEM_POOL=768
 # the repo locally and are building accordingly
 ADD start.sh start.sh
 RUN chmod +x start.sh
+RUN pwd
+RUN ls -l
 
 # Place the template file for server.properties. This is assumed to be in the
 # local directory.

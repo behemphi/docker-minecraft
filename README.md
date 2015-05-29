@@ -1,6 +1,8 @@
 # Run like this
 
 ```
-docker run -d -p 25525:25525 --name minecraft_1.8.6 minecraft:1.8.6
+docker run \
+    --detach 
+    --publish 25565:25565 --name minecraft_1.8.6 behemphi/docker-minecraft:latest
 ```
 

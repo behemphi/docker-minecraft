@@ -3,7 +3,7 @@
 allow-flight=${ALLOW_FLIGHT}
 allow-nether=${ALLOW_NETHER}
 announce-player-achievements=${ANNOUNCE_PLAYER_ACHIEVEMENTS}
-difficulty=${DIFFICULT:Y}
+difficulty=${DIFFICULTY}
 enable-command-block=${ENABLE_COMMAND_BLOCK}
 enable-query=${ENABLE_QUERY}
 enable-rcon=${ENABLE_RCON}

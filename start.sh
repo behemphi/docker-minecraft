@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # This simple loop read the template file and writes out the environment 
 # values to a servers.properties file. Defaults are set in the Dockerfile and
