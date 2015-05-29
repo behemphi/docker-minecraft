@@ -72,7 +72,7 @@ ENV SPAWN_PROTECTION=16                 MAX_TICK_TIME=60000 \
 #
 # Because this file is tied to a blogpost suggesting a 1GB droplet at 
 # Digital Ocean, we will deviate from the normal 1024M
-ENV MAX_MEM_POOL=768                   INITAL_MEM_POOL=768
+ENV MAX_MEM_POOL=768                   INITIAL_MEM_POOL=768
 
 # Add the start script from the local directory. This assumes you have cloned
 # the repo locally and are building accordingly
