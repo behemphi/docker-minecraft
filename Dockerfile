@@ -91,5 +91,6 @@ ADD server.properties.template server.properties.template
 ADD https://s3.amazonaws.com/Minecraft.Download/versions/${VERSION}/minecraft_server.${VERSION}.jar minecraft_server.jar
 
 # Run the server. Once past the EULA it will write out some new files.  
-CMD start.sh
+ENTRYPOINT ["/minecraft/start.sh"]
+
 
