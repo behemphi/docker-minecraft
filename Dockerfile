@@ -78,8 +78,12 @@ ENV MAX_MEM_POOL=768                   INITIAL_MEM_POOL=768
 # the repo locally and are building accordingly
 ADD start.sh start.sh
 RUN chmod +x start.sh
-RUN pwd
-RUN ls -l
+
+# Some logs are written to file even though they are also written to STDERR and 
+# STDOUT. We are going to send those to /dev/null
+RUN mkdir logs
+RUN pwd && ls -l
+RUN ln -sv /dev/null logs/latest.log
 
 # Place the template file for server.properties. This is assumed to be in the
 # local directory.
@@ -89,6 +93,7 @@ ADD server.properties.template server.properties.template
 # This happens towards the end to keep the above command hitting the docker 
 # build cache and speeding up the process.
 ADD https://s3.amazonaws.com/Minecraft.Download/versions/${VERSION}/minecraft_server.${VERSION}.jar minecraft_server.jar
+#ADD minecraft_server.1.8.6.jar minecraft_server.jar
 
 # Run the server. Once past the EULA it will write out some new files.  
 ENTRYPOINT ["/minecraft/start.sh"]
