@@ -85,8 +85,8 @@ RUN mkdir logs
 # Pull in the Minecraft server jar based on version
 # This happens towards the end to keep the above command hitting the docker 
 # build cache and speeding up the process.
-#ADD https://s3.amazonaws.com/Minecraft.Download/versions/${VERSION}/minecraft_server.${VERSION}.jar minecraft_server.jar
-ADD minecraft_server.1.8.6.jar minecraft_server.jar
+ADD https://s3.amazonaws.com/Minecraft.Download/versions/${VERSION}/minecraft_server.${VERSION}.jar minecraft_server.jar
+#ADD minecraft_server.1.8.6.jar minecraft_server.jar
 
 # Place the template file for server.properties. This is assumed to be in the
 # local directory.
