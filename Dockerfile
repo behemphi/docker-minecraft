@@ -17,7 +17,6 @@ ENV PORT 25565
 # We are going to put our MineCraft JAR in its own special directory
 WORKDIR /minecraft
 
-# Expose the typical Minecraft server port. Remember however that the -P 
 # flag must be explicitly set in the run command for this port to 
 # be exposed by the container
 EXPOSE ${PORT}
@@ -26,7 +25,7 @@ EXPOSE ${PORT}
 # only if it does not exist. We are going to drop the needed KV pair and
 # call it good. This happens at config time because we don't want to deal with 
 # it on every run.
-RUN echo "eula=true" > eula.txt
+#RUN echo "eula=true" > eula.txt
 
 # Below is an abstraction of properties found in the 
 # server.properties file. We are going define them here with their 
@@ -43,7 +42,7 @@ RUN echo "eula=true" > eula.txt
 #
 # Note the use of a single ENV command. This makes for far fewer layers
 # in the image.
-ENV SPAWN_PROTECTION=16                 MAX_TICK_TIME=60000 \
+ENV SPAWN_PROTECTION=16                 MAX_TICK_TIME=-1 \
     GENERATOR_SETTINGS=""               FORCE_GAMEMODE=false \
     ALLOW_NETHER=true                   GAMEMODE=0 \
     ENABLE_QUERY=false                  PLAYER_IDLE_TIMEOUT=0 \
@@ -54,17 +53,16 @@ ENV SPAWN_PROTECTION=16                 MAX_TICK_TIME=60000 \
     HARDCORE=false                      ENABLE_COMMAND_BLOCK=false \
     MAX_PLAYERS=20                      NETWORK_COMPRESSION_THRESHOLD=256 \
     MAX_WORLD_SIZE=29999984             SERVER_PORT=25565 \
-	SERVER_IP=""                      	SPAWN_NPCS=true \
-	ALLOW_FLIGHT=false                  LEVEL_NAME=WORLD \
-	VIEW_DISTANCE=10                	RESOURCE_PACK="" \
-	SPAWN_ANIMALS=true              	WHITE_LIST=false \
-	GENERATE_STRUCTURES=true        	ONLINE_MODE=true \
-	MAX_BUILD_HEIGHT=256            	LEVEL_SEED="" \
-	USE_NATIVE_TRANSPORT=true           ENABLE_RCON=false \
+    SERVER_IP=""                        SPAWN_NPCS=true \
+    ALLOW_FLIGHT=false                  LEVEL_NAME=WORLD \
+    VIEW_DISTANCE=10                    RESOURCE_PACK="" \
+    SPAWN_ANIMALS=true                  WHITE_LIST=false \
+    GENERATE_STRUCTURES=true            ONLINE_MODE=true \
+    MAX_BUILD_HEIGHT=256                LEVEL_SEED="" \
+    USE_NATIVE_TRANSPORT=true           ENABLE_RCON=false \
     MOTD="Welcome to my very own Minecraft server!" \
     QUERY_PORT=25565                    RCON_PASSWORD="" \
     RCON_PORT=25575                    
-
 
 # These next two are not server.properties values, rather they configure 
 # memory allocation for the JVM itself. We want these to be set sensibly, but 
@@ -82,20 +80,18 @@ RUN chmod +x start.sh
 # Some logs are written to file even though they are also written to STDERR and 
 # STDOUT. We are going to send those to /dev/null
 RUN mkdir logs
-RUN pwd && ls -l
-RUN ln -sv /dev/null logs/latest.log
+
+# Expose the typical Minecraft server port. Remember however that the -P 
+# Pull in the Minecraft server jar based on version
+# This happens towards the end to keep the above command hitting the docker 
+# build cache and speeding up the process.
+#ADD https://s3.amazonaws.com/Minecraft.Download/versions/${VERSION}/minecraft_server.${VERSION}.jar minecraft_server.jar
+ADD minecraft_server.1.8.6.jar minecraft_server.jar
 
 # Place the template file for server.properties. This is assumed to be in the
 # local directory.
 ADD server.properties.template server.properties.template
 
-# Pull in the Minecraft server jar based on version
-# This happens towards the end to keep the above command hitting the docker 
-# build cache and speeding up the process.
-ADD https://s3.amazonaws.com/Minecraft.Download/versions/${VERSION}/minecraft_server.${VERSION}.jar minecraft_server.jar
-#ADD minecraft_server.1.8.6.jar minecraft_server.jar
-
 # Run the server. Once past the EULA it will write out some new files.  
-ENTRYPOINT ["/minecraft/start.sh"]
-
+#ENTRYPOINT ["/minecraft/start.sh"]
 
