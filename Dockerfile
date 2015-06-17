@@ -93,5 +93,5 @@ ADD https://s3.amazonaws.com/Minecraft.Download/versions/${VERSION}/minecraft_se
 ADD server.properties.template server.properties.template
 
 # Run the server. Once past the EULA it will write out some new files.  
-#ENTRYPOINT ["/minecraft/start.sh"]
+ENTRYPOINT ["/minecraft/start.sh"]
 
