@@ -25,7 +25,7 @@ EXPOSE ${PORT}
 # only if it does not exist. We are going to drop the needed KV pair and
 # call it good. This happens at config time because we don't want to deal with 
 # it on every run.
-#RUN echo "eula=true" > eula.txt
+RUN echo "eula=true" > eula.txt
 
 # Below is an abstraction of properties found in the 
 # server.properties file. We are going define them here with their 
