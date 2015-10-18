@@ -1,0 +1,10 @@
+[Unit]
+Description=Minecraft Creative Server
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker run -d -p 22334:25565 -e GAMEMODE=1 -e FORCE_GAMEMODE=true --volumes-from minecraft-creative-data behemphi/docker-minecraft
+
+[Install]
+WantedBy=multi-user.target

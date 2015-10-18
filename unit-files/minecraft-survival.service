@@ -1,0 +1,10 @@
+[Unit]
+Description=Minecraft Survival Server
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker run --detach --publish 25565:25565 --volumes-from minecraft-data behemphi/docker-minecraft:latest
+
+[Install]
+WantedBy=multi-user.target

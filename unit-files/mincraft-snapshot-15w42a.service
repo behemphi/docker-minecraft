@@ -1,0 +1,15 @@
+[Unit]
+Description=Minecraft Survival Snapshot 15w42a
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker run \
+    --detach \
+    --publish 25565:25565 \
+    --env MOTD="Enjoy Snapshot 15w42a from the Hemphikids" 
+    --volumes-from minecraft-15w42a-data 
+    behemphi/docker-minecraft:snapshot-1.9.0-15w42a
+
+[Install]
+WantedBy=multi-user.target

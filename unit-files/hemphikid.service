@@ -1,0 +1,10 @@
+[Unit]
+Description=Family Web Site
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker run --detach --publish 80:5000 behemphi/hemphikid
+
+[Install]
+WantedBy=multi-user.target
