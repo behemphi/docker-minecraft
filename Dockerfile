@@ -6,7 +6,7 @@ FROM jeanblanchard/busybox-java:8
 MAINTAINER Boyd Hemphill <behemphi@gmail.com>
 
 # Set the version of the Minecraft server for this build. 
-ENV VERSION 1.8.6
+ENV VERSION="15w41a"
 
 # Set the default port. This can be sensibly overwritten at run time.
 ENV PORT 25565

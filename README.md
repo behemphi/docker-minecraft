@@ -15,6 +15,11 @@ the [supporting blog post](http://stackengine.com/docker-101-03-2-containerizing
 The run command below will get you the latest snapshot my kids have asked me
 to containerize.  
 
+You can check [Docker Hub]() for an up to date list of tags, but here is 
+partial immedate gratification:
+
+* 1.8.6-a
+* snapshot-1.9.0-15w41a
 
 ```
 docker run \
